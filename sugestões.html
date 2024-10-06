@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sugestões</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+      font-size: 20px;
+      text-align: center;
+      padding: 50px;
+    }
+    
+    h1 {
+      color: #333333;
+      font-size: 28px;
+    }
+    
+    .button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>És PT ou NT?</h1>
+  <a class="button" onclick="showInput('NT')">NT</a>
+  <a class="button" onclick="showInput('PT')">PT</a>
+
+  <div id="sugestao-container" style="display: none;">
+    <h2 id="sugestao-title"></h2>
+    <input type="text" id="sugestao-input" placeholder="Escreve aqui a tua sugestão">
+    <br>
+    <button class="button" onclick="submitSugestao()">Submeter</button>
+  </div>
+
+  <p id="mensagem" style="display: none;"></p>
+
+  <script>
+    function showInput(opcao) {
+      var sugestaoContainer = document.getElementById("sugestao-container");
+      var sugestaoTitle = document.getElementById("sugestao-title");
+      var mensagem = document.getElementById("mensagem");
+
+      if (opcao === "NT") {
+        sugestaoTitle.innerHTML = "Sugere alterações nos Planos de Dieta da página:";
+      } else if (opcao === "PT") {
+        sugestaoTitle.innerHTML = "Sugere alterações nos Planos de Treino da página:";
+      }
+
+      sugestaoContainer.style.display = "block";
+      mensagem.style.display = "none";
+    }
+
+    function submitSugestao() {
+      var sugestaoInput = document.getElementById("sugestao-input");
+      var mensagem = document.getElementById("mensagem");
+
+      if (sugestaoInput.value !== "") {
+        mensagem.innerHTML = "Obrigado pela sugestão! Iremos avaliar para melhorar a página!";
+      } else {
+        mensagem.innerHTML = "Por favor, escreva a sua sugestão.";
+      }
+
+      mensagem.style.display = "block";
+      sugestaoInput.value = "";
+    }
+  </script>
+</body>
+</html>
